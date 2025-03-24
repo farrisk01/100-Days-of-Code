@@ -10,28 +10,33 @@
 def retrieve_names():
     name_list = []
     try:
-        with open("/Users/kfarris/PycharmProjects/100-days/Input/Names/invited_names.txt") as f:
+        with open("/Users/kfarris/PycharmProjects/100-Days-of-Code/Day 24/Input/Names/invited_names.txt") as f:
                 name_list = f.read().splitlines()
         return name_list
     except FileNotFoundError:
-        print("File not found")
+        print("Failed to find the name list")
 
 def retrieve_invite():
     try:
-        with open("/Users/kfarris/PycharmProjects/100-days/Input/Letters/starting_letter.txt", 'r') as f:
+        with open("/Users/kfarris/PycharmProjects/100-Days-of-Code/Day 24/Input/Letters/starting_letter.txt", 'r') as f:
             file_as_string = f.read()
         return file_as_string
     except FileNotFoundError:
-        print("File not found")
+        print("Failed to find letter template")
 def create_invitations():
     name_list = retrieve_names()
     invite = retrieve_invite()
     try:
         for name in name_list:
-            with open("/Users/kfarris/PycharmProjects/100-days/Output/ReadyToSend/" + name + ".txt", 'w') as f:
+            print(name)
+            print(invite)
+            with open("/Users/kfarris/PycharmProjects/100-Days-of-Code/Day 24/Output/ReadyToSend/" + name + ".txt", 'w') as f:
                 f.write(invite.replace('[name]', name))
     except:
         print("Failed to create invitations")
+
+# print (retrieve_names())
+# print(retrieve_invite())
 
 create_invitations()
 
